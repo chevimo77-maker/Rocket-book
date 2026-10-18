@@ -24,5 +24,20 @@ Online: https://chevimo77-maker.github.io/Rocket-book/
 | 14 | Regreso a casa | `p14-home.html` |
 
 Navegación: flechas dentro de la página, teclado (← →) o deslizar horizontalmente en táctil.
+Cada cambio de página tiene una transición (deslizar + fundido; solo fundido si el sistema pide menos movimiento).
+
+## Estructura
+- `index.html`, `pNN-*.html`: las 14 páginas (HTML plano, ~20 KB cada una).
+- `assets/`: archivos compartidos (se descargan una sola vez): runtime, React, fuente, `book.css`, `book.js`
+  (escalado, transiciones, teclado/gestos) y `noise/` (texturas de grano pre-renderizadas).
+- `tools/build.py`: regenera las páginas y `assets/` desde `tools/source-book.html` (el export original):
+  `python3 -I tools/build.py`. `tools/noise/*.html` son las fuentes de las texturas de `assets/noise/`
+  (se renderizan con Chrome headless).
+
+## Rendimiento
+Antes cada página llevaba su propia copia comprimida de React, runtime y fuente (~175 KB) y reconstruía el
+documento con JS al cargar. Ahora son ~20 KB por página + assets cacheados, la página se muestra ya
+renderizada, y los 4 filtros `feTurbulence` a pantalla completa (muy costosos en tablets) se sustituyeron
+por imágenes.
 
 Fuente: Baloo 2 (SIL Open Font License 1.1), incluida dentro de cada archivo.

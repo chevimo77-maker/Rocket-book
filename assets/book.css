@@ -1,0 +1,32 @@
+/* Shared styles for every page of the book. Pages are designed at 1194x834 (tablet)
+   and scaled to fit any screen by book.js. */
+html,body{margin:0;position:fixed;inset:0;width:100%;height:100%;overflow:hidden;background:#0b1030;overscroll-behavior:none;-webkit-text-size-adjust:100%;-webkit-user-select:none;user-select:none}
+x-dc{display:none}
+
+#dc-root{position:absolute;left:0;top:0;width:1194px;height:834px;transform-origin:0 0;overflow:hidden;background:#221859;opacity:0;contain:layout paint}
+
+/* Pre-rendered paper/grain textures (replace four full-screen feTurbulence filters). */
+.nz{position:absolute;left:0;top:0;width:1194px;height:834px;pointer-events:none;transform:translateZ(0)}
+.nz-mottle{background:url(noise/mottle.png) 0 0/1194px 834px no-repeat}
+.nz-speck{background:url(noise/speck.png) 0 0/256px 256px repeat}
+.nz-chalk{background:url(noise/chalk.png) 0 0/256px 256px repeat}
+.nz-grain{background:url(noise/grain.png) 0 0/256px 256px repeat}
+
+/* Page transitions: the old page slides out, the new one slides in from the same direction. */
+html.ready #dc-root{animation:pg-in .45s cubic-bezier(.2,.8,.2,1) both}
+html.ready[data-dir=prev] #dc-root{animation-name:pg-in-prev}
+html.leaving #dc-root{animation:pg-out .26s cubic-bezier(.4,0,1,1) both}
+html.leaving[data-leave=prev] #dc-root{animation-name:pg-out-prev}
+@keyframes pg-in{from{opacity:0;translate:64px 0}to{opacity:1;translate:0 0}}
+@keyframes pg-in-prev{from{opacity:0;translate:-64px 0}to{opacity:1;translate:0 0}}
+@keyframes pg-out{from{opacity:1;translate:0 0}to{opacity:0;translate:-64px 0}}
+@keyframes pg-out-prev{from{opacity:1;translate:0 0}to{opacity:0;translate:64px 0}}
+@media (prefers-reduced-motion:reduce){
+  html.ready #dc-root,html.ready[data-dir=prev] #dc-root{animation:pg-fade .2s both}
+  html.leaving #dc-root,html.leaving[data-leave=prev] #dc-root{animation:pg-fade-out .15s both}
+  @keyframes pg-fade{from{opacity:0}to{opacity:1}}
+  @keyframes pg-fade-out{from{opacity:1}to{opacity:0}}
+}
+
+#rot{display:none;position:fixed;top:calc(6px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:9;background:#ffb703;color:#1a1a1a;font:600 13px/1.2 system-ui,-apple-system,sans-serif;padding:6px 14px;border-radius:999px;pointer-events:none;white-space:nowrap}
+@media (orientation:portrait) and (max-width:700px){#rot{display:block}}
