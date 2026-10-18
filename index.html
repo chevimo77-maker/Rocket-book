@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>¡Rumbo a la Luna! · Libro interactivo</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{--bg:#0b1030;--card:#151b4a;--accent:#ffb703;--ink:#f4f1ff;--mute:#9aa3d6}
+  body{background:radial-gradient(ellipse at top,#1b2268,var(--bg) 70%) fixed;color:var(--ink);font-family:"Baloo 2",system-ui,-apple-system,sans-serif;min-height:100vh;display:flex;flex-direction:column}
+  header{text-align:center;padding:22px 16px 8px}
+  h1{font-size:clamp(1.6rem,4vw,2.4rem)}
+  header p{color:var(--mute)}
+  main{flex:1;display:grid;grid-template-columns:260px 1fr;gap:16px;padding:12px 16px 16px;max-width:1200px;width:100%;margin:0 auto}
+  nav{background:var(--card);border-radius:16px;padding:10px;overflow:auto;max-height:78vh}
+  nav button{display:flex;gap:10px;align-items:center;width:100%;text-align:left;background:none;border:0;color:var(--ink);font:inherit;padding:8px 10px;border-radius:10px;cursor:pointer}
+  nav button:hover:not(:disabled){background:#222a6b}
+  nav button.on{background:var(--accent);color:#1a1a1a}
+  nav button:disabled{color:#5b6498;cursor:not-allowed}
+  nav b{min-width:26px}
+  .stage{display:flex;flex-direction:column;gap:10px;min-width:0}
+  .frame{background:#faf9f5;border-radius:16px;overflow:hidden;flex:1;min-height:70vh;box-shadow:0 10px 40px #0008}
+  iframe{width:100%;height:100%;min-height:70vh;border:0;display:block}
+  .ctrl{display:flex;justify-content:space-between;align-items:center}
+  .ctrl button{background:var(--accent);border:0;border-radius:999px;padding:8px 20px;font:inherit;font-weight:700;cursor:pointer}
+  .ctrl button:disabled{opacity:.35;cursor:not-allowed}
+  @media(max-width:760px){main{grid-template-columns:1fr}nav{max-height:none;display:flex;overflow-x:auto}nav button{width:auto;white-space:nowrap}}
+</style>
+</head>
+<body>
+<header>
+  <h1>🚀 ¡Rumbo a la Luna!</h1>
+  <p>Libro interactivo</p>
+</header>
+<main>
+  <nav id="nav" aria-label="Páginas del libro"></nav>
+  <section class="stage">
+    <div class="frame" id="frame"></div>
+    <div class="ctrl">
+      <button id="prev">← Anterior</button>
+      <span id="count"></span>
+      <button id="next">Siguiente →</button>
+    </div>
+  </section>
+</main>
+<script>
+// Add new pages by dropping a file in /pages and filling in its entry here.
+const TOTAL = 14;
+const PAGES = {
+  7: { title: "Cuenta regresiva", file: "pages/07-cuenta-regresiva.html" }
+};
+let cur = Number(location.hash.slice(1)) || 7;
+const nav = document.getElementById("nav"), frame = document.getElementById("frame");
+const prev = document.getElementById("prev"), next = document.getElementById("next");
+const avail = Object.keys(PAGES).map(Number).sort((a, b) => a - b);
+
+for (let i = 1; i <= TOTAL; i++) {
+  const b = document.createElement("button");
+  b.dataset.n = i;
+  b.disabled = !PAGES[i];
+  b.innerHTML = `<b>${i}</b><span>${PAGES[i] ? PAGES[i].title : "Próximamente"}</span>`;
+  b.onclick = () => go(i);
+  nav.appendChild(b);
+}
+function go(n) {
+  if (!PAGES[n]) return;
+  cur = n;
+  location.hash = n;
+  frame.innerHTML = "";
+  const f = document.createElement("iframe");
+  f.src = PAGES[n].file;
+  f.title = PAGES[n].title;
+  frame.appendChild(f);
+  [...nav.children].forEach(b => b.classList.toggle("on", Number(b.dataset.n) === n));
+  document.getElementById("count").textContent = `${n} / ${TOTAL}`;
+  const idx = avail.indexOf(n);
+  prev.disabled = idx <= 0;
+  next.disabled = idx >= avail.length - 1;
+}
+prev.onclick = () => go(avail[avail.indexOf(cur) - 1]);
+next.onclick = () => go(avail[avail.indexOf(cur) + 1]);
+go(PAGES[cur] ? cur : avail[0]);
+</script>
+</body>
+</html>
