@@ -24,6 +24,10 @@
       if (dir) de.setAttribute('data-dir', dir);
     } catch (e) {}
     de.classList.add('ready');
+    var d = document.getElementById('dc-root');
+    var done = function () { if (!leaving) de.classList.add('shown'); };
+    if (d) d.addEventListener('animationend', function h(e) { if (e.target === d) { d.removeEventListener('animationend', h); done(); } });
+    setTimeout(done, 700); // in case animationend never fires (hidden tab, reduced motion)
   }
 
   // Wait until the runtime has rendered the page and the font is ready, so the
@@ -53,6 +57,7 @@
     leaving = true;
     try { sessionStorage.setItem('rl-dir', dir); } catch (e) {}
     de.setAttribute('data-leave', dir);
+    de.classList.remove('shown');
     de.classList.add('leaving');
     setTimeout(function () { location.href = href; }, DUR);
   }
@@ -87,7 +92,7 @@
   window.addEventListener('pageshow', function (e) {
     if (!e.persisted) return;
     leaving = false;
-    de.classList.remove('leaving', 'ready');
+    de.classList.remove('leaving', 'ready', 'shown');
     de.removeAttribute('data-leave');
     revealed = false;
     void de.offsetWidth;

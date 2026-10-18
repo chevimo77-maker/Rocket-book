@@ -40,4 +40,13 @@ documento con JS al cargar. Ahora son ~20 KB por página + assets cacheados, la 
 renderizada, y los 4 filtros `feTurbulence` a pantalla completa (muy costosos en tablets) se sustituyeron
 por imágenes.
 
+Animaciones: el filtro SVG `shade` de los personajes se recalculaba en cada fotograma (ruido + desplazamiento
++ desenfoque), y las texturas usaban `mix-blend-mode`, que obliga a mezclar toda la pantalla por fotograma.
+Ahora `shade` conserva solo el borde de luz/sombra y las texturas usan mezcla normal (pre-convertidas con
+`tools/noise/softlight-to-normal.html`).
+
+Benchmark: `node tools/bench.mjs [throttle] [páginas...]` abre Chrome headless con CPU ralentizada y
+render por software a 2x, toca la escena varias veces y mide fps. Con CPU 6x más lenta: antes 16–43 fps en
+varias páginas, ahora 60 fps en las 14.
+
 Fuente: Baloo 2 (SIL Open Font License 1.1), en `assets/baloo2-latin.woff2` (licencia en `assets/OFL-Baloo2.txt`).

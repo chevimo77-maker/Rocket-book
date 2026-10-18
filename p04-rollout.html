@@ -158,27 +158,7 @@ a{color:#1B1440}a:hover{color:#2F5BD6}
 <button type="button" class="{{cls}}" sc-camel-on-click="{{tap}}" aria-label="Toca el camión">
 <svg sc-camel-view-box="0 0 1194 834" width="1194" height="834" aria-hidden="true">
 <defs>
-<filter id="shade" x="-15%" y="-15%" width="130%" height="130%" color-interpolation-filters="sRGB">
-<feTurbulence type="fractalNoise" sc-camel-base-frequency="0.035" sc-camel-num-octaves="2" seed="5" result="w"></feTurbulence>
-<feDisplacementMap in="SourceGraphic" in2="w" scale="1.5" sc-camel-x-channel-selector="R" sc-camel-y-channel-selector="G" result="src"></feDisplacementMap>
-<feColorMatrix in="src" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="a"></feColorMatrix>
-<feOffset in="a" dx="-9" dy="-7" result="o1"></feOffset>
-<feComposite in="a" in2="o1" operator="out" result="rimD"></feComposite>
-<feGaussianBlur in="rimD" sc-camel-std-deviation="1.4" result="rimDb"></feGaussianBlur>
-<feOffset in="a" dx="7" dy="7" result="o2"></feOffset>
-<feComposite in="a" in2="o2" operator="out" result="rimL"></feComposite>
-<feGaussianBlur in="rimL" sc-camel-std-deviation="1.6" result="rimLb"></feGaussianBlur>
-<feTurbulence type="fractalNoise" sc-camel-base-frequency="0.9" sc-camel-num-octaves="2" seed="8" result="n"></feTurbulence>
-<feColorMatrix in="n" type="matrix" values="0 0 0 0 0.12  0 0 0 0 0.06  0 0 0 0 0.3  0 0 0 -2.6 1.3" result="dots"></feColorMatrix>
-<feComposite in="dots" in2="src" operator="in" result="grit"></feComposite>
-<feComponentTransfer in="grit" result="grit2"><feFuncA type="linear" slope=".18"></feFuncA></feComponentTransfer>
-<feFlood flood-color="#24125E" flood-opacity=".14"></feFlood>
-<feComposite in2="rimDb" operator="in" result="sh"></feComposite>
-<feComposite in="dots" in2="rimDb" operator="in" result="shDots"></feComposite>
-<feFlood flood-color="#FFFFFF" flood-opacity=".15"></feFlood>
-<feComposite in2="rimLb" operator="in" result="hl"></feComposite>
-<feMerge><feMergeNode in="src"></feMergeNode><feMergeNode in="grit2"></feMergeNode><feMergeNode in="hl"></feMergeNode><feMergeNode in="sh"></feMergeNode><feMergeNode in="shDots"></feMergeNode></feMerge>
-</filter>
+<filter id="shade" x="-15%" y="-15%" width="130%" height="130%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="a"></feColorMatrix><feOffset in="a" dx="-9" dy="-7" result="o1"></feOffset><feComposite in="a" in2="o1" operator="out" result="rimD"></feComposite><feOffset in="a" dx="7" dy="7" result="o2"></feOffset><feComposite in="a" in2="o2" operator="out" result="rimL"></feComposite><feFlood flood-color="#24125E" flood-opacity=".14"></feFlood><feComposite in2="rimD" operator="in" result="sh"></feComposite><feFlood flood-color="#FFFFFF" flood-opacity=".15"></feFlood><feComposite in2="rimL" operator="in" result="hl"></feComposite><feMerge><feMergeNode in="SourceGraphic"></feMergeNode><feMergeNode in="hl"></feMergeNode><feMergeNode in="sh"></feMergeNode></feMerge></filter>
 <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2A1E6E"></stop><stop offset=".45" stop-color="#7A3A9E"></stop><stop offset=".75" stop-color="#E0607E"></stop><stop offset="1" stop-color="#F7A75A"></stop></linearGradient>
 <pattern id="dust" width="180" height="180" sc-camel-pattern-units="userSpaceOnUse">
 <g fill="#B9AEF7"><circle cx="12" cy="20" r="2"></circle><circle cx="40" cy="8" r="1.4"></circle><circle cx="70" cy="34" r="2.6"></circle><circle cx="100" cy="14" r="1.2"></circle><circle cx="130" cy="44" r="2"></circle><circle cx="160" cy="22" r="1.6"></circle><circle cx="24" cy="70" r="1.4"></circle><circle cx="56" cy="96" r="2.2"></circle><circle cx="90" cy="76" r="1.4"></circle><circle cx="120" cy="110" r="2.8"></circle><circle cx="150" cy="90" r="1.2"></circle><circle cx="18" cy="130" r="2.4"></circle><circle cx="48" cy="160" r="1.4"></circle><circle cx="84" cy="140" r="1.8"></circle><circle cx="110" cy="170" r="1.2"></circle><circle cx="144" cy="150" r="2.2"></circle><circle cx="170" cy="128" r="1.4"></circle></g>
@@ -273,10 +253,10 @@ a{color:#1B1440}a:hover{color:#2F5BD6}
 <a href="p03-suit-up.html" aria-label="Página anterior" style="position: absolute; left: 36px; bottom: 36px; width: 80px; height: 80px; border-radius: 40px; background: #FFF7E8; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 0 rgba(27,20,64,.35)"><svg width="36" height="36" sc-camel-view-box="0 0 24 24" fill="none" stroke="#1B1440" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg></a>
 <div style="position: absolute; left: 552px; bottom: 54px; width: 90px; text-align: center; padding: 6px 0; border-radius: 999px; background: #1B1440; color: #FFF7E8; font-size: 22px; font-weight: 700; pointer-events: none">4 / 14</div>
 <a href="p05-fuel.html" aria-label="Página siguiente" style="position: absolute; right: 36px; bottom: 36px; width: 80px; height: 80px; border-radius: 40px; background: #F07A22; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 0 #B5520F"><svg width="36" height="36" sc-camel-view-box="0 0 24 24" fill="none" stroke="#FFF7E8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"></path></svg></a>
-<div class="nz nz-mottle" aria-hidden="true" style="mix-blend-mode: soft-light; opacity: 0.3"></div>
-<div class="nz nz-speck" aria-hidden="true" style="mix-blend-mode: multiply; opacity: 0.22"></div>
-<div class="nz nz-chalk" aria-hidden="true" style="mix-blend-mode: screen; opacity: 0.15"></div>
-<div class="nz nz-grain" aria-hidden="true" style="mix-blend-mode: soft-light; opacity: 0.38"></div>
+<div class="nz nz-mottle" aria-hidden="true" style="opacity: 0.3"></div>
+<div class="nz nz-speck" aria-hidden="true" style="opacity: 0.22"></div>
+<div class="nz nz-chalk" aria-hidden="true" style="opacity: 0.15"></div>
+<div class="nz nz-grain" aria-hidden="true" style="opacity: 0.38"></div>
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script="" data-props="{&quot;$preview&quot;:{&quot;width&quot;:1194,&quot;height&quot;:834}}">

@@ -6,7 +6,7 @@ x-dc{display:none}
 #dc-root{position:absolute;left:0;top:0;width:1194px;height:834px;transform-origin:0 0;overflow:hidden;background:#221859;opacity:0;contain:layout paint}
 
 /* Pre-rendered paper/grain textures (replace four full-screen feTurbulence filters). */
-.nz{position:absolute;left:0;top:0;width:1194px;height:834px;pointer-events:none;transform:translateZ(0)}
+.nz{position:absolute;left:0;top:0;width:1194px;height:834px;pointer-events:none}
 .nz-mottle{background:url(noise/mottle.png) 0 0/1194px 834px no-repeat}
 .nz-speck{background:url(noise/speck.png) 0 0/256px 256px repeat}
 .nz-chalk{background:url(noise/chalk.png) 0 0/256px 256px repeat}
@@ -15,6 +15,9 @@ x-dc{display:none}
 /* Page transitions: the old page slides out, the new one slides in from the same direction. */
 html.ready #dc-root{animation:pg-in .45s cubic-bezier(.2,.8,.2,1) both}
 html.ready[data-dir=prev] #dc-root{animation-name:pg-in-prev}
+/* Once the entrance finishes, drop the animation so the page isn't kept on its own
+   compositing surface for the rest of its life. */
+html.shown #dc-root,html.shown[data-dir] #dc-root{animation:none;opacity:1}
 html.leaving #dc-root{animation:pg-out .26s cubic-bezier(.4,0,1,1) both}
 html.leaving[data-leave=prev] #dc-root{animation-name:pg-out-prev}
 @keyframes pg-in{from{opacity:0;translate:64px 0}to{opacity:1;translate:0 0}}
