@@ -12,7 +12,7 @@ import base64, gzip, json, os, re, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(ROOT, 'tools', 'source-book.html')
-NAMES = ['index', 'p02-training', 'p03-suit-up', 'p04-rollout', 'p05-fuel', 'p06-board',
+NAMES = ['p01-cover', 'p02-training', 'p03-suit-up', 'p04-rollout', 'p05-fuel', 'p06-board',
          'p07-countdown', 'p08-liftoff', 'p09-booster', 'p10-refuel', 'p11-journey',
          'p12-landing', 'p13-moonwalk', 'p14-home']
 REACT_URL = 'https://cdn.jsdelivr.net/npm/react@18.3.1/umd/react.production.min.js'
@@ -72,7 +72,7 @@ def main():
             tpl = tpl.replace(u, path)
 
         # Links: sibling .dc.html files -> plain pages.
-        tpl = tpl.replace('Main.dc.html', 'index.html')
+        tpl = tpl.replace('Main.dc.html', 'p01-cover.html')
         tpl = re.sub(r'(p\d\d-[a-z0-9-]+)\.dc\.html', r'\1.html', tpl)
         assert '.dc.html' not in tpl
 

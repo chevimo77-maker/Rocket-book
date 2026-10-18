@@ -8,7 +8,7 @@ Online: https://chevimo77-maker.github.io/Rocket-book/
 
 | # | Página | Archivo |
 |---|--------|---------|
-| 1 | Portada | `index.html` |
+| 1 | Portada | `p01-cover.html` |
 | 2 | Entrenamiento | `p02-training.html` |
 | 3 | A vestirse | `p03-suit-up.html` |
 | 4 | A la plataforma | `p04-rollout.html` |
@@ -23,11 +23,17 @@ Online: https://chevimo77-maker.github.io/Rocket-book/
 | 13 | Paseo lunar | `p13-moonwalk.html` |
 | 14 | Regreso a casa | `p14-home.html` |
 
+Pantalla completa: botón arriba a la derecha (no aparece en iPhone, donde Safari no lo permite).
+
 Navegación: flechas dentro de la página, teclado (← →) o deslizar horizontalmente en táctil.
 Cada cambio de página tiene una transición (deslizar + fundido; solo fundido si el sistema pide menos movimiento).
 
 ## Estructura
-- `index.html`, `pNN-*.html`: las 14 páginas (HTML plano, ~20 KB cada una).
+- `index.html`: el lector. Muestra las páginas en un marco y tiene el botón de pantalla completa (así la
+  pantalla completa se mantiene al pasar de página). La URL guarda la página: `index.html#p07-countdown.html`.
+  Si se abre una página suelta, redirige al lector (`?solo` lo evita, lo usa el benchmark).
+- `pNN-*.html`: las 14 páginas (HTML plano, ~20 KB cada una).
+- `manifest.webmanifest`: en iPad/Android, "Añadir a pantalla de inicio" abre el libro a pantalla completa.
 - `assets/`: archivos compartidos (se descargan una sola vez): runtime, React, fuente, `book.css`, `book.js`
   (escalado, transiciones, teclado/gestos) y `noise/` (texturas de grano pre-renderizadas).
 - `tools/build.py`: regenera las páginas y `assets/` desde `tools/source-book.html` (el export original):

@@ -3,6 +3,13 @@
 (function () {
   'use strict';
   var W = 1194, H = 834, DUR = 260;
+
+  // Pages are read inside index.html (the shell keeps fullscreen across page turns).
+  // Opened on its own (old link, bookmark), a page hands over to the shell. ?solo skips this.
+  if (window.top === window && !/[?&]solo\b/.test(location.search)) {
+    location.replace('index.html#' + location.pathname.split('/').pop());
+    return;
+  }
   var de = document.documentElement;
   var leaving = false, revealed = false;
 
@@ -63,6 +70,7 @@
   }
   function next() { go(labelHref('Página siguiente') || labelHref('Empezar el libro') || labelHref('Leer el libro otra vez'), 'next'); }
   function prev() { go(labelHref('Página anterior'), 'prev'); }
+  window.__book = { next: next, prev: prev };
 
   // Intercept the in-page arrows so they animate too.
   document.addEventListener('click', function (e) {

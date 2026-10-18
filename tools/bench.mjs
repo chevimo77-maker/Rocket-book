@@ -11,7 +11,7 @@ const ROOT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 const PORT = 9333;
 const THROTTLE = Number(process.argv[2] || 4);
-const ALL = ['index', 'p02-training', 'p03-suit-up', 'p04-rollout', 'p05-fuel', 'p06-board', 'p07-countdown',
+const ALL = ['p01-cover', 'p02-training', 'p03-suit-up', 'p04-rollout', 'p05-fuel', 'p06-board', 'p07-countdown',
   'p08-liftoff', 'p09-booster', 'p10-refuel', 'p11-journey', 'p12-landing', 'p13-moonwalk', 'p14-home'];
 const PAGES = process.argv.length > 3 ? process.argv.slice(3) : ALL;
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -52,7 +52,7 @@ async function main() {
 
   const rows = [];
   for (const name of PAGES) {
-    const url = pathToFileURL(path.join(ROOT, name + '.html')).href;
+    const url = pathToFileURL(path.join(ROOT, name + '.html')).href + '?solo';
     await send('Page.navigate', { url }, s);
     await sleep(2500);
     if (process.env.PRE_EVAL) { await send('Runtime.evaluate', { expression: process.env.PRE_EVAL }, s); await sleep(300); }

@@ -1,0 +1,11 @@
+{
+  "name": "¡Rumbo a la Luna! Libro interactivo",
+  "short_name": "Rumbo a la Luna",
+  "start_url": "./",
+  "scope": "./",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "background_color": "#0b1030",
+  "theme_color": "#0b1030",
+  "lang": "es-CO"
+}
