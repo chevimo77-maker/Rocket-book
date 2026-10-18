@@ -40,4 +40,4 @@ documento con JS al cargar. Ahora son ~20 KB por página + assets cacheados, la 
 renderizada, y los 4 filtros `feTurbulence` a pantalla completa (muy costosos en tablets) se sustituyeron
 por imágenes.
 
-Fuente: Baloo 2 (SIL Open Font License 1.1), incluida dentro de cada archivo.
+Fuente: Baloo 2 (SIL Open Font License 1.1), en `assets/baloo2-latin.woff2` (licencia en `assets/OFL-Baloo2.txt`).
