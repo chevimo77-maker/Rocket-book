@@ -1,21 +1,9 @@
 # 🚀 ¡Rumbo a la Luna! — Libro interactivo
 
-Interactive children's book. `index.html` is the book shell (page navigator + viewer);
-each book page is a self-contained HTML file in `pages/`.
+Libro interactivo de 14 páginas en un solo archivo autocontenido (`index.html`).
 
-## Pages
-| # | Page | File |
-|---|------|------|
-| 7 | Cuenta regresiva | `pages/07-cuenta-regresiva.html` |
+1. Portada · 2. Entrenamiento · 3. A vestirse · 4. A la plataforma · 5. Combustible · 6. A bordo · 7. Cuenta regresiva · 8. Despegue · 9. El propulsor vuelve · 10. Bomba de gasolina espacial · 11. Viaje a la Luna · 12. Aterrizaje · 13. Paseo lunar · 14. Regreso a casa
 
-## Adding a page
-1. Drop the exported HTML in `pages/` (e.g. `pages/08-despegue.html`).
-2. Add an entry to the `PAGES` map in `index.html`.
+Online: https://chevimo77-maker.github.io/Rocket-book/
 
-## Run locally
-```bash
-python3 -m http.server 8000
-```
-Then open http://localhost:8000.
-
-Fonts: Baloo 2 (SIL Open Font License 1.1), bundled inside the page files.
+Fuente: Baloo 2 (SIL Open Font License 1.1), incluida dentro del archivo.
