@@ -126,7 +126,7 @@
 </style>
 <style>
 body{margin:0}
-a{color:#1B1440}a:hover{color:#2F5BD6}
+a{color:#1E2A4A}a:hover{color:#51D0E0}
 .scene{position:absolute;left:0;top:0;width:1194px;height:834px;border:0;padding:0;margin:0;background:none;cursor:pointer;display:block;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 .scene.busy{cursor:progress}
 .scene svg{display:block}
@@ -169,8 +169,7 @@ a{color:#1B1440}a:hover{color:#2F5BD6}
 <button type="button" class="{{cls}}" sc-camel-on-click="{{tap}}" aria-label="Toca el cielo para traerlos a casa">
 <svg sc-camel-view-box="0 0 1194 834" width="1194" height="834" aria-hidden="true">
 <defs>
-<filter id="shade" x="-15%" y="-15%" width="130%" height="130%" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="a"></feColorMatrix><feOffset in="a" dx="-9" dy="-7" result="o1"></feOffset><feComposite in="a" in2="o1" operator="out" result="rimD"></feComposite><feOffset in="a" dx="7" dy="7" result="o2"></feOffset><feComposite in="a" in2="o2" operator="out" result="rimL"></feComposite><feFlood flood-color="#24125E" flood-opacity=".14"></feFlood><feComposite in2="rimD" operator="in" result="sh"></feComposite><feFlood flood-color="#FFFFFF" flood-opacity=".15"></feFlood><feComposite in2="rimL" operator="in" result="hl"></feComposite><feMerge><feMergeNode in="SourceGraphic"></feMergeNode><feMergeNode in="hl"></feMergeNode><feMergeNode in="sh"></feMergeNode></feMerge></filter>
-<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3B2A8C"></stop><stop offset=".5" stop-color="#B0478E"></stop><stop offset="1" stop-color="#F7A75A"></stop></linearGradient>
+<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3B2A8C"></stop><stop offset=".5" stop-color="#B0478E"></stop><stop offset="1" stop-color="#FFB870"></stop></linearGradient>
 <pattern id="dust" width="180" height="180" sc-camel-pattern-units="userSpaceOnUse">
 <g fill="#B9AEF7"><circle cx="12" cy="20" r="2"></circle><circle cx="40" cy="8" r="1.4"></circle><circle cx="70" cy="34" r="2.6"></circle><circle cx="100" cy="14" r="1.2"></circle><circle cx="130" cy="44" r="2"></circle><circle cx="160" cy="22" r="1.6"></circle><circle cx="24" cy="70" r="1.4"></circle><circle cx="56" cy="96" r="2.2"></circle><circle cx="90" cy="76" r="1.4"></circle><circle cx="120" cy="110" r="2.8"></circle><circle cx="150" cy="90" r="1.2"></circle><circle cx="18" cy="130" r="2.4"></circle><circle cx="48" cy="160" r="1.4"></circle><circle cx="84" cy="140" r="1.8"></circle><circle cx="110" cy="170" r="1.2"></circle><circle cx="144" cy="150" r="2.2"></circle><circle cx="170" cy="128" r="1.4"></circle></g>
 </pattern>
@@ -181,52 +180,52 @@ a{color:#1B1440}a:hover{color:#2F5BD6}
 <path class="tw" d="M0 -9V9M-9 0H9M-6 -6L6 6M6 -6L-6 6" transform="translate(800 80)"></path>
 <path class="tw" d="M0 -9V9M-9 0H9M-6 -6L6 6M6 -6L-6 6" transform="translate(1120 230)" style="animation-delay: 1s"></path>
 </g>
-<g transform="translate(1040 520)" filter="url(#shade)">
-<circle r="120" fill="#F07A22"></circle>
-<path d="M-110 -40 Q-40 -70 20 -44 T120 -40" fill="none" stroke="#F7A75A" stroke-width="18" stroke-linecap="round"></path>
-<path d="M-118 14 Q-40 -12 20 12 T120 8" fill="none" stroke="#F7C948" stroke-width="16" stroke-linecap="round" opacity=".7"></path>
+<g transform="translate(1040 520)" class="ol">
+<circle r="120" fill="#FF9F45"></circle>
+<path d="M-110 -40 Q-40 -70 20 -44 T120 -40" fill="none" stroke="#FFB870" stroke-width="18" stroke-linecap="round"></path>
+<path d="M-118 14 Q-40 -12 20 12 T120 8" fill="none" stroke="#FFCC5E" stroke-width="16" stroke-linecap="round" opacity=".7"></path>
 </g>
 <g fill="#FFE1EC" opacity=".9"><ellipse cx="860" cy="280" rx="80" ry="24"></ellipse><ellipse cx="900" cy="262" rx="46" ry="28"></ellipse><ellipse cx="240" cy="420" rx="70" ry="22"></ellipse><ellipse cx="270" cy="404" rx="40" ry="24"></ellipse></g>
 <g class="cf">
-<rect x="200" y="100" width="14" height="22" rx="4" fill="#F07A22"></rect>
-<rect x="420" y="80" width="14" height="22" rx="4" fill="#F7C948" style="animation-delay: .5s"></rect>
-<rect x="760" y="110" width="14" height="22" rx="4" fill="#8E7BE0" style="animation-delay: 1s"></rect>
-<rect x="980" y="90" width="14" height="22" rx="4" fill="#7FD3F7" style="animation-delay: .3s"></rect>
-<rect x="580" y="70" width="14" height="22" rx="4" fill="#F29BA0" style="animation-delay: 1.4s"></rect>
-<rect x="320" y="60" width="14" height="22" rx="4" fill="#2F5BD6" style="animation-delay: 1.8s"></rect>
+<rect x="200" y="100" width="14" height="22" rx="4" fill="#FF9F45"></rect>
+<rect x="420" y="80" width="14" height="22" rx="4" fill="#FFCC5E" style="animation-delay: .5s"></rect>
+<rect x="760" y="110" width="14" height="22" rx="4" fill="#7FB8FF" style="animation-delay: 1s"></rect>
+<rect x="980" y="90" width="14" height="22" rx="4" fill="#51D0E0" style="animation-delay: .3s"></rect>
+<rect x="580" y="70" width="14" height="22" rx="4" fill="#FD8CA7" style="animation-delay: 1.4s"></rect>
+<rect x="320" y="60" width="14" height="22" rx="4" fill="#51D0E0" style="animation-delay: 1.8s"></rect>
 </g>
-<rect x="0" y="580" width="1194" height="254" fill="#2F5BD6"></rect>
-<g class="wave"><path d="M-40 586 Q0 572 40 586 T120 586 T200 586 T280 586 T360 586 T440 586 T520 586 T600 586 T680 586 T760 586 T840 586 T920 586 T1000 586 T1080 586 T1160 586 T1240 586 L1240 600 L-40 600Z" fill="#7FD3F7"></path></g>
-<path d="M-20 670 Q200 646 420 670 T860 670 T1220 666" fill="none" stroke="#4E8BF0" stroke-width="22" stroke-linecap="round" opacity=".7"></path>
-<path d="M-20 760 Q240 736 480 760 T960 758 T1220 756" fill="none" stroke="#1E3A8A" stroke-width="20" stroke-linecap="round" opacity=".6"></path>
-<ellipse class="hint" cx="760" cy="400" rx="160" ry="120" fill="none" stroke="#F7C948" stroke-width="6"></ellipse>
+<rect x="0" y="580" width="1194" height="254" fill="#51D0E0"></rect>
+<g class="wave"><path d="M-40 586 Q0 572 40 586 T120 586 T200 586 T280 586 T360 586 T440 586 T520 586 T600 586 T680 586 T760 586 T840 586 T920 586 T1000 586 T1080 586 T1160 586 T1240 586 L1240 600 L-40 600Z" fill="#51D0E0"></path></g>
+<path d="M-20 670 Q200 646 420 670 T860 670 T1220 666" fill="none" stroke="#4F86F7" stroke-width="22" stroke-linecap="round" opacity=".7"></path>
+<path d="M-20 760 Q240 736 480 760 T960 758 T1220 756" fill="none" stroke="#1E2A4A" stroke-width="20" stroke-linecap="round" opacity=".6"></path>
+<ellipse class="hint" cx="760" cy="400" rx="160" ry="120" fill="none" stroke="#FFCC5E" stroke-width="6"></ellipse>
 <g class="desc"><g class="bob">
-<g transform="translate(600 610)" filter="url(#shade)">
+<g transform="translate(600 610)" class="ol">
 <g class="sway">
 <g class="lines" stroke="#FFF7E8" stroke-width="3"><path d="M-20 -90 L-150 -300"></path><path d="M0 -90 L0 -330"></path><path d="M20 -90 L150 -300"></path></g>
 <g transform="translate(-150 -300)"><g class="chute">
-<path d="M-80 0 Q-80 -96 0 -96 Q80 -96 80 0 Q40 -18 0 0 Q-40 -18 -80 0Z" fill="#F07A22"></path>
-<path d="M-30 -8 Q-34 -70 0 -96 Q-10 -60 -6 -4Z" fill="#F7C948"></path>
+<path d="M-80 0 Q-80 -96 0 -96 Q80 -96 80 0 Q40 -18 0 0 Q-40 -18 -80 0Z" fill="#FF9F45"></path>
+<path d="M-30 -8 Q-34 -70 0 -96 Q-10 -60 -6 -4Z" fill="#FFCC5E"></path>
 </g></g>
 <g transform="translate(150 -300)"><g class="chute">
-<path d="M-80 0 Q-80 -96 0 -96 Q80 -96 80 0 Q40 -18 0 0 Q-40 -18 -80 0Z" fill="#F07A22"></path>
-<path d="M-30 -8 Q-34 -70 0 -96 Q-10 -60 -6 -4Z" fill="#F7C948"></path>
+<path d="M-80 0 Q-80 -96 0 -96 Q80 -96 80 0 Q40 -18 0 0 Q-40 -18 -80 0Z" fill="#FF9F45"></path>
+<path d="M-30 -8 Q-34 -70 0 -96 Q-10 -60 -6 -4Z" fill="#FFCC5E"></path>
 </g></g>
 <g transform="translate(0 -330)"><g class="chute">
 <path d="M-80 0 Q-80 -96 0 -96 Q80 -96 80 0 Q40 -18 0 0 Q-40 -18 -80 0Z" fill="#FFF7E8"></path>
-<path d="M-30 -8 Q-34 -70 0 -96 Q-10 -60 -6 -4Z" fill="#2F5BD6"></path>
+<path d="M-30 -8 Q-34 -70 0 -96 Q-10 -60 -6 -4Z" fill="#51D0E0"></path>
 </g></g>
 </g>
-<ellipse cx="0" cy="-2" rx="60" ry="12" fill="#1B1440"></ellipse>
+<ellipse cx="0" cy="-2" rx="60" ry="12" fill="#1E2A4A"></ellipse>
 <path d="M-60 -4 L60 -4 L34 -82 Q0 -98 -34 -82Z" fill="#FFFFFF"></path>
-<path d="M30 -4 L60 -4 L34 -82 Q26 -86 18 -88Z" fill="#DCD5F2"></path>
-<rect x="-60" y="-16" width="120" height="8" fill="#F07A22"></rect>
-<rect x="-14" y="-98" width="28" height="12" rx="4" fill="#2F5BD6"></rect>
-<circle cx="-18" cy="-48" r="16" fill="#F7C948"></circle><circle cx="18" cy="-48" r="16" fill="#F7C948"></circle>
-<circle cx="-18" cy="-48" r="12" fill="#9A5B3A"></circle><circle cx="18" cy="-48" r="12" fill="#F3C9A8"></circle>
-<path d="M-30 -52 Q-18 -64 -6 -52Z" fill="#2A1A14"></path><path d="M6 -53 Q18 -63 30 -53Z" fill="#5A3220"></path>
-<g fill="#1B1440"><circle cx="-22" cy="-46" r="2.2"></circle><circle cx="-14" cy="-46" r="2.2"></circle><circle cx="14" cy="-46" r="2.2"></circle><circle cx="22" cy="-46" r="2.2"></circle></g>
-<path d="M-21 -41 Q-18 -38 -15 -41" fill="none" stroke="#1B1440" stroke-width="1.6"></path><path d="M15 -41 Q18 -38 21 -41" fill="none" stroke="#1B1440" stroke-width="1.6"></path>
+<path d="M30 -4 L60 -4 L34 -82 Q26 -86 18 -88Z" fill="#D2E6FF"></path>
+<rect x="-60" y="-16" width="120" height="8" fill="#FF9F45"></rect>
+<rect x="-14" y="-98" width="28" height="12" rx="4" fill="#51D0E0"></rect>
+<circle cx="-18" cy="-48" r="16" fill="#FFCC5E"></circle><circle cx="18" cy="-48" r="16" fill="#FFCC5E"></circle>
+<circle cx="-18" cy="-48" r="12" fill="#A86A45"></circle><circle cx="18" cy="-48" r="12" fill="#FFD9B8"></circle>
+<path d="M-30 -52 Q-18 -64 -6 -52Z" fill="#2A1A14"></path><path d="M6 -53 Q18 -63 30 -53Z" fill="#6B3E26"></path>
+<g fill="#1E2A4A"><circle cx="-22" cy="-46" r="2.2"></circle><circle cx="-14" cy="-46" r="2.2"></circle><circle cx="14" cy="-46" r="2.2"></circle><circle cx="22" cy="-46" r="2.2"></circle></g>
+<path d="M-21 -41 Q-18 -38 -15 -41" fill="none" stroke="#1E2A4A" stroke-width="1.6"></path><path d="M15 -41 Q18 -38 21 -41" fill="none" stroke="#1E2A4A" stroke-width="1.6"></path>
 </g>
 </g></g>
 <g fill="#FFFFFF">
@@ -237,33 +236,29 @@ a{color:#1B1440}a:hover{color:#2F5BD6}
 <circle class="drop" cx="600" cy="592" r="10" style="--dx: 0px; animation-delay: .05s"></circle>
 </g>
 <g class="boat"><g class="bob" style="animation-delay: .7s">
-<path d="M800 600 L1100 600 L1070 660 L830 660Z" fill="#F7C948"></path>
-<path d="M830 640 H1070" stroke="#F07A22" stroke-width="8"></path>
+<path d="M800 600 L1100 600 L1070 660 L830 660Z" fill="#FFCC5E"></path>
+<path d="M830 640 H1070" stroke="#FF9F45" stroke-width="8"></path>
 <rect x="860" y="550" width="120" height="50" rx="10" fill="#FFF7E8"></rect>
-<rect x="876" y="562" width="30" height="22" rx="5" fill="#7FD3F7"></rect><rect x="920" y="562" width="30" height="22" rx="5" fill="#7FD3F7"></rect>
-<rect x="1000" y="520" width="10" height="80" fill="#1B1440"></rect>
-<path d="M1010 524 L1050 538 L1010 552Z" fill="#E8483A"></path>
+<rect x="876" y="562" width="30" height="22" rx="5" fill="#51D0E0"></rect><rect x="920" y="562" width="30" height="22" rx="5" fill="#51D0E0"></rect>
+<rect x="1000" y="520" width="10" height="80" fill="#1E2A4A"></rect>
+<path d="M1010 524 L1050 538 L1010 552Z" fill="#FF6B6B"></path>
 <circle cx="1040" cy="618" r="8" fill="#FFFFFF"></circle><circle cx="1064" cy="618" r="8" fill="#FFFFFF"></circle>
-<circle cx="1041" cy="620" r="4.5" fill="#1B1440"></circle><circle cx="1065" cy="620" r="4.5" fill="#1B1440"></circle>
-<path d="M1044 632 Q1052 638 1060 632" fill="none" stroke="#1B1440" stroke-width="3" stroke-linecap="round"></path>
+<circle cx="1041" cy="620" r="4.5" fill="#1E2A4A"></circle><circle cx="1065" cy="620" r="4.5" fill="#1E2A4A"></circle>
+<path d="M1042 631 Q1052 632 1062 631 Q1060.4 646 1052 646 Q1043.6 646 1042 631Z" fill="#B23A5A" stroke="#1E2A4A" stroke-width="2.5" stroke-linejoin="round"></path><ellipse cx="1052" cy="641.8" rx="4.8" ry="3" fill="#FD8CA7"></ellipse>
 </g></g>
 <g class="end">
-<text x="880" y="440" text-anchor="middle" font-family="'Baloo 2', sans-serif" font-size="140" font-weight="800" fill="#FFF7E8" stroke="#1B1440" stroke-width="10" paint-order="stroke">Fin</text>
+<text x="880" y="440" text-anchor="middle" font-family="'Baloo 2', sans-serif" font-size="140" font-weight="800" fill="#FFF7E8" stroke="#1E2A4A" stroke-width="10" paint-order="stroke">Fin</text>
 </g>
 <g fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" opacity=".4" transform="translate(1130 40) scale(1)"><path d="M-42 0 a42 42 0 0 0 84 0"></path><path d="M-29 0 a29 29 0 0 0 58 0"></path><path d="M-16 0 a16 16 0 0 0 32 0"></path></g><g fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" opacity=".4" transform="translate(700 330) scale(0.8)"><path d="M-42 0 a42 42 0 0 0 84 0"></path><path d="M-29 0 a29 29 0 0 0 58 0"></path><path d="M-16 0 a16 16 0 0 0 32 0"></path></g>
 </svg>
 </button>
-<div style="position: absolute; left: 40px; top: 36px; width: 600px; padding: 20px 28px; border-radius: 28px; background: rgba(27,20,64,.6); pointer-events: none">
-<p style="margin: 0; font-size: 36px; font-weight: 700; line-height: 1.15; color: #FFF7E8">{{caption}}</p>
-<p class="{{pillCls}}" style="margin: 12px 0 0; display: inline-block; padding: 6px 20px; border-radius: 999px; background: #F7C948; color: #1B1440; font-size: 24px; font-weight: 700">{{hint}}</p>
+<div style="position: absolute; left: 40px; top: 36px; width: 600px; padding: 20px 28px; border-radius: 28px; background: #FFFFFF; border: 5px solid #1E2A4A; box-shadow: 0 7px 0 #1E2A4A; pointer-events: none">
+<p style="margin: 0; font-size: 36px; font-weight: 700; line-height: 1.15; color: #1E2A4A">{{caption}}</p>
+<p class="{{pillCls}}" style="margin: 12px 0 0; display: inline-block; padding: 6px 20px; border-radius: 999px; background: #FFCC5E; border: 4px solid #1E2A4A; color: #1E2A4A; font-size: 24px; font-weight: 700">{{hint}}</p>
 </div>
-<a href="p13-moonwalk.html" aria-label="Página anterior" style="position: absolute; left: 36px; bottom: 36px; width: 80px; height: 80px; border-radius: 40px; background: #FFF7E8; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 0 rgba(27,20,64,.35)"><svg width="36" height="36" sc-camel-view-box="0 0 24 24" fill="none" stroke="#1B1440" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg></a>
-<div style="position: absolute; left: 552px; bottom: 54px; width: 90px; text-align: center; padding: 6px 0; border-radius: 999px; background: #FFF7E8; color: #1B1440; font-size: 22px; font-weight: 700; pointer-events: none">14 / 14</div>
-<a href="p01-cover.html" aria-label="Leer el libro otra vez" style="position: absolute; right: 36px; bottom: 36px; height: 80px; padding: 0 30px; border-radius: 40px; background: #F07A22; color: #FFF7E8; display: flex; align-items: center; gap: 10px; font-size: 28px; font-weight: 800; text-decoration: none; box-shadow: 0 6px 0 #B5520F"><svg width="30" height="30" sc-camel-view-box="0 0 24 24" fill="none" stroke="#FFF7E8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 1 0 3-6.2"></path><path d="M4 4v4h4"></path></svg>Leer otra vez</a>
-<div class="nz nz-mottle" aria-hidden="true" style="opacity: 0.3"></div>
-<div class="nz nz-speck" aria-hidden="true" style="opacity: 0.22"></div>
-<div class="nz nz-chalk" aria-hidden="true" style="opacity: 0.15"></div>
-<div class="nz nz-grain" aria-hidden="true" style="opacity: 0.38"></div>
+<a href="p13-moonwalk.html" aria-label="Página anterior" style="position: absolute; left: 36px; bottom: 36px; width: 80px; height: 80px; border-radius: 40px; background: #FFF7E8; display: flex; align-items: center; justify-content: center; border: 5px solid #1E2A4A; border: 5px solid #1E2A4A; box-shadow: 0 6px 0 #1E2A4A"><svg width="36" height="36" sc-camel-view-box="0 0 24 24" fill="none" stroke="#1E2A4A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg></a>
+<div style="position: absolute; left: 552px; bottom: 54px; width: 90px; text-align: center; padding: 6px 0; border-radius: 999px; background: #FFF7E8; border: 4px solid #1E2A4A; color: #1E2A4A; font-size: 22px; font-weight: 700; pointer-events: none">14 / 14</div>
+<a href="p01-cover.html" aria-label="Leer el libro otra vez" style="position: absolute; right: 36px; bottom: 36px; height: 80px; padding: 0 30px; border-radius: 40px; background: #FF9F45; color: #FFF7E8; display: flex; align-items: center; gap: 10px; font-size: 28px; font-weight: 800; text-decoration: none; border: 5px solid #1E2A4A; box-shadow: 0 6px 0 #1E2A4A"><svg width="30" height="30" sc-camel-view-box="0 0 24 24" fill="none" stroke="#FFF7E8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 1 0 3-6.2"></path><path d="M4 4v4h4"></path></svg>Leer otra vez</a>
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script="" data-props="{&quot;$preview&quot;:{&quot;width&quot;:1194,&quot;height&quot;:834}}">

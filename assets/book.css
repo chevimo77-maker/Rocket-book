@@ -5,15 +5,8 @@ x-dc{display:none}
 
 #dc-root{position:absolute;left:0;top:0;width:1194px;height:834px;transform-origin:0 0;overflow:hidden;background:#221859;opacity:0;contain:layout paint}
 
-/* Pre-rendered paper/grain textures (replace four full-screen feTurbulence filters). */
-.nz{position:absolute;left:0;top:0;width:1194px;height:834px;pointer-events:none}
-.nz-mottle{background:url(noise/mottle.png) 0 0/1194px 834px no-repeat}
-.nz-speck{background:url(noise/speck.png) 0 0/256px 256px repeat}
-.nz-chalk{background:url(noise/chalk.png) 0 0/256px 256px repeat}
-.nz-grain{background:url(noise/grain.png) 0 0/256px 256px repeat}
-
 /* SeaBeans redesign: thick navy sticker outline on scene objects (tools/restyle.py). */
-.ol :is(path,circle,ellipse,rect,polygon):not([fill=none]){stroke:#1E2A4A;stroke-width:5px;stroke-linejoin:round;paint-order:stroke}
+.ol :is(path,circle,ellipse,rect,polygon):not([fill=none]):not(.art *){stroke:#1E2A4A;stroke-width:5px;stroke-linejoin:round;paint-order:stroke}
 
 /* Page transitions: the old page slides out, the new one slides in from the same direction. */
 html.ready #dc-root{animation:pg-in .45s cubic-bezier(.2,.8,.2,1) both}

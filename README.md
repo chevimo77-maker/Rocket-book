@@ -35,10 +35,15 @@ Cada cambio de página tiene una transición (deslizar + fundido; solo fundido s
 - `pNN-*.html`: las 14 páginas (HTML plano, ~20 KB cada una).
 - `manifest.webmanifest`: en iPad/Android, "Añadir a pantalla de inicio" abre el libro a pantalla completa.
 - `assets/`: archivos compartidos (se descargan una sola vez): runtime, React, fuente, `book.css`, `book.js`
-  (escalado, transiciones, teclado/gestos) y `noise/` (texturas de grano pre-renderizadas).
+  (escalado, transiciones, teclado/gestos).
 - `tools/build.py`: regenera las páginas y `assets/` desde `tools/source-book.html` (el export original):
-  `python3 -I tools/build.py`. `tools/noise/*.html` son las fuentes de las texturas de `assets/noise/`
-  (se renderizan con Chrome headless).
+  `python3 -I tools/build.py`.
+- `tools/restyle.py`: el diseño estilo SeaBeans (plano, contorno azul marino grueso, colores pastel). Paleta,
+  contornos y tarjetas para todas las páginas, y los personajes redibujados: Ana y Leo (cuerpo entero y caras en
+  ventanas), el cohete gordito con cara, la Luna, el propulsor de la página 9. Las bocas pequeñas que quedan se
+  cambian por sonrisas abiertas.
+- `tools/shots.mjs`: captura cada página después de cada toque (`node tools/shots.mjs /tmp/out p07-countdown`),
+  para revisar que las animaciones encajan con los dibujos.
 
 ## Rendimiento
 Antes cada página llevaba su propia copia comprimida de React, runtime y fuente (~175 KB) y reconstruía el
@@ -48,8 +53,7 @@ por imágenes.
 
 Animaciones: el filtro SVG `shade` de los personajes se recalculaba en cada fotograma (ruido + desplazamiento
 + desenfoque), y las texturas usaban `mix-blend-mode`, que obliga a mezclar toda la pantalla por fotograma.
-Ahora `shade` conserva solo el borde de luz/sombra y las texturas usan mezcla normal (pre-convertidas con
-`tools/noise/softlight-to-normal.html`).
+Con el rediseño ya no hay filtros ni texturas: el contorno es un trazo normal.
 
 Benchmark: `node tools/bench.mjs [throttle] [páginas...]` abre Chrome headless con CPU ralentizada y
 render por software a 2x, toca la escena varias veces y mide fps. Con CPU 6x más lenta: antes 16–43 fps en

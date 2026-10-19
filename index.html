@@ -38,7 +38,7 @@
 (function () {
   'use strict';
   var frame = document.getElementById('book'), btn = document.getElementById('fs'), de = document.documentElement;
-  var PAGE = /^(preview-)?p\d\d-[a-z0-9-]+\.html$/;
+  var PAGE = /^p\d\d-[a-z0-9-]+\.html$/;
 
   // Start on the page in the hash (#p07-countdown.html), else the cover.
   var start = decodeURIComponent(location.hash.slice(1));

@@ -20,7 +20,7 @@ NAMES = ['p01-cover', 'p02-training', 'p03-suit-up', 'p04-rollout', 'p05-fuel', 
          'p12-landing', 'p13-moonwalk', 'p14-home']
 # Pages switched to the SeaBeans redesign (tools/restyle.py). `--preview` also writes
 # preview-<page>.html for the redesigned pages that are not switched yet.
-RESTYLED = set()
+RESTYLED = set(NAMES)
 PREVIEW = '--preview' in sys.argv
 REACT_URL = 'https://cdn.jsdelivr.net/npm/react@18.3.1/umd/react.production.min.js'
 SHADE = (
