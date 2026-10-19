@@ -10,11 +10,18 @@ shared files live once in assets/ (cached across pages) and each page is plain H
 """
 import base64, gzip, json, os, re, sys
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import restyle  # noqa: E402
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(ROOT, 'tools', 'source-book.html')
 NAMES = ['p01-cover', 'p02-training', 'p03-suit-up', 'p04-rollout', 'p05-fuel', 'p06-board',
          'p07-countdown', 'p08-liftoff', 'p09-booster', 'p10-refuel', 'p11-journey',
          'p12-landing', 'p13-moonwalk', 'p14-home']
+# Pages switched to the SeaBeans redesign (tools/restyle.py). `--preview` also writes
+# preview-<page>.html for the redesigned pages that are not switched yet.
+RESTYLED = set()
+PREVIEW = '--preview' in sys.argv
 REACT_URL = 'https://cdn.jsdelivr.net/npm/react@18.3.1/umd/react.production.min.js'
 SHADE = (
     '<feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" result="a"></feColorMatrix>'
@@ -95,27 +102,13 @@ def main():
 
         tpl = tpl.replace('<link rel="preconnect" href="https://fonts.googleapis.com">\n', '')
 
-        body = tpl[tpl.index('<body>') + len('<body>'):tpl.rindex('</body>')]
-        prev = NAMES[i - 1] + '.html' if i > 0 else None
-        nxt = NAMES[i + 1] + '.html' if i < 13 else None
-        head = [
-            '<meta charset="utf-8">',
-            '<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, viewport-fit=cover">',
-            '<meta name="theme-color" content="#0b1030">',
-            '<title>%s</title>' % title,
-            '<link rel="stylesheet" href="assets/book.css">',
-            '<link rel="preload" href="assets/baloo2-latin.woff2" as="font" type="font/woff2" crossorigin>',
-            '<link rel="preload" href="assets/react.production.min.js" as="script">',
-            '<link rel="preload" href="assets/react-dom.production.min.js" as="script">',
-            '<script>window.__resources=%s;</script>' % json.dumps({REACT_URL: 'assets/react.production.min.js', REACT_DOM_URL: 'assets/react-dom.production.min.js'}),
-            '<script src="assets/dc-runtime.js"></script>',
-        ]
-        for p in (nxt, prev):
-            if p:
-                head.append('<link rel="prefetch" href="%s">' % p)
-        html = ('<!DOCTYPE html>\n<html lang="es-CO"><head>\n' + '\n'.join(head) + '\n</head>\n<body>'
-                + body + '\n<noscript>Esta página necesita JavaScript.</noscript>\n<script src="assets/book.js"></script>\n</body></html>\n')
-        out[NAMES[i]] = html
+        # Redesigned pages: restyled for real once approved; otherwise only as preview-<name>.html.
+        if NAMES[i] in RESTYLED:
+            out[NAMES[i]] = page_html(restyle.apply(tpl, NAMES[i]), i, title)
+        else:
+            out[NAMES[i]] = page_html(tpl, i, title)
+            if PREVIEW and NAMES[i] in restyle.PAGES:
+                out['preview-' + NAMES[i]] = page_html(restyle.apply(tpl, NAMES[i]), i, title, preview=True)
 
     for path, data in shared.items():
         with open(os.path.join(ROOT, path), 'wb') as f:
@@ -123,8 +116,36 @@ def main():
     for name, html in out.items():
         with open(os.path.join(ROOT, name + '.html'), 'w', encoding='utf-8') as f:
             f.write(html)
-        print('%-16s %6d bytes' % (name + '.html', len(html.encode('utf-8'))))
+        print('%-26s %6d bytes' % (name + '.html', len(html.encode('utf-8'))))
     print('assets:', {p: len(d) for p, d in shared.items()})
+
+
+def page_html(tpl, i, title, preview=False):
+    body = tpl[tpl.index('<body>') + len('<body>'):tpl.rindex('</body>')]
+    if preview:
+        # Preview pages link to each other so the two redesigned pages can be compared in a row.
+        body = body.replace('href="p02-training.html"', 'href="preview-p07-countdown.html"')
+        body = body.replace('href="p06-board.html"', 'href="preview-p01-cover.html"')
+    prev = NAMES[i - 1] + '.html' if i > 0 else None
+    nxt = NAMES[i + 1] + '.html' if i < 13 else None
+    head = [
+        '<meta charset="utf-8">',
+        '<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, viewport-fit=cover">',
+        '<meta name="theme-color" content="#0b1030">',
+        '<title>%s</title>' % title,
+        '<link rel="stylesheet" href="assets/book.css">',
+        '<link rel="preload" href="assets/baloo2-latin.woff2" as="font" type="font/woff2" crossorigin>',
+        '<link rel="preload" href="assets/react.production.min.js" as="script">',
+        '<link rel="preload" href="assets/react-dom.production.min.js" as="script">',
+        '<script>window.__resources=%s;</script>' % json.dumps({REACT_URL: 'assets/react.production.min.js', REACT_DOM_URL: 'assets/react-dom.production.min.js'}),
+        '<script src="assets/dc-runtime.js"></script>',
+    ]
+    for p in (nxt, prev):
+        if p:
+            head.append('<link rel="prefetch" href="%s">' % p)
+    html = ('<!DOCTYPE html>\n<html lang="es-CO"><head>\n' + '\n'.join(head) + '\n</head>\n<body>'
+            + body + '\n<noscript>Esta página necesita JavaScript.</noscript>\n<script src="assets/book.js"></script>\n</body></html>\n')
+    return html
 
 
 if __name__ == '__main__':
